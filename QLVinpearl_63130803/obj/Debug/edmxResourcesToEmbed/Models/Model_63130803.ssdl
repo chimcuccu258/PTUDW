@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLVinpearl_63130803Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHUCNANG">
+    <Key>
+      <PropertyRef Name="maChucNang" />
+    </Key>
+    <Property Name="maChucNang" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenChucNang" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="maHD" />
+      <PropertyRef Name="maVe" />
+    </Key>
+    <Property Name="maHD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maVe" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="soLuong" Type="int" />
+    <Property Name="giaTien" Type="money" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="maDV" />
+    </Key>
+    <Property Name="maDV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenDV" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="moTa" Type="ntext" />
+    <Property Name="anh" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="maLoaiDV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="xepLoai" Type="float" />
+    <Property Name="sdtDV" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="diaChiDV" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="maHD" />
+    </Key>
+    <Property Name="maHD" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maKH" Type="varchar" MaxLength="10" />
+    <Property Name="maNV" Type="varchar" MaxLength="10" />
+    <Property Name="ngayThanhToan" Type="datetime" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="maKH" />
+    </Key>
+    <Property Name="maKH" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hoTenKH" Type="nvarchar" MaxLength="255" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="ngaySinh" Type="datetime" />
+    <Property Name="gioiTinh" Type="bit" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="matKhau" Type="varchar" MaxLength="255" />
+    <Property Name="anh" Type="varchar" MaxLength="255" />
+    <Property Name="ResetPasswordCode" Type="varchar" MaxLength="255" />
+    <Property Name="ResetPasswordCodeExpiration" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LOAIDV">
+    <Key>
+      <PropertyRef Name="maLoaiDV" />
+    </Key>
+    <Property Name="maLoaiDV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenLoai" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LOAINV">
+    <Key>
+      <PropertyRef Name="maLoaiNV" />
+    </Key>
+    <Property Name="maLoaiNV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenLoai" Type="nvarchar" MaxLength="255" />
+    <Property Name="luongCoBan" Type="money" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="maNV" />
+    </Key>
+    <Property Name="maNV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maLoaiNV" Type="varchar" MaxLength="10" />
+    <Property Name="hoTenNV" Type="nvarchar" MaxLength="255" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="ngaySinh" Type="datetime" />
+    <Property Name="sdt" Type="varchar" MaxLength="20" />
+    <Property Name="gioiTinh" Type="bit" />
+    <Property Name="anh" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="matKhau" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PHANQUYEN">
+    <Key>
+      <PropertyRef Name="maChucNang" />
+      <PropertyRef Name="maLoaiNV" />
+    </Key>
+    <Property Name="maChucNang" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maLoaiNV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ghiChu" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SOCA">
+    <Key>
+      <PropertyRef Name="maCa" />
+      <PropertyRef Name="maNV" />
+    </Key>
+    <Property Name="maCa" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maNV" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="soCa" Type="int" />
+  </EntityType>
+  <EntityType Name="VE">
+    <Key>
+      <PropertyRef Name="maVe" />
+    </Key>
+    <Property Name="maVe" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="maDV" Type="varchar" MaxLength="10" />
+    <Property Name="loaiVe" Type="bit" />
+    <Property Name="giaTien" Type="money" />
+  </EntityType>
+  <Association Name="fk_CTHD_HOADON">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="maHD" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="maHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CTHD_VE">
+    <End Role="VE" Type="Self.VE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VE">
+        <PropertyRef Name="maVe" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="maVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DICHVU_LOAIDV">
+    <End Role="LOAIDV" Type="Self.LOAIDV" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIDV">
+        <PropertyRef Name="maLoaiDV" />
+      </Principal>
+      <Dependent Role="DICHVU">
+        <PropertyRef Name="maLoaiDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HOADON_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="maKH" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="maKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HOADON_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="maNV" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="maNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_NHANVIEN_LOAINV">
+    <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAINV">
+        <PropertyRef Name="maLoaiNV" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="maLoaiNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PHANQUYEN_CHUCNANG">
+    <End Role="CHUCNANG" Type="Self.CHUCNANG" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCNANG">
+        <PropertyRef Name="maChucNang" />
+      </Principal>
+      <Dependent Role="PHANQUYEN">
+        <PropertyRef Name="maChucNang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PHANQUYEN_LOAINV">
+    <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAINV">
+        <PropertyRef Name="maLoaiNV" />
+      </Principal>
+      <Dependent Role="PHANQUYEN">
+        <PropertyRef Name="maLoaiNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SOCA_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SOCA" Type="Self.SOCA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="maNV" />
+      </Principal>
+      <Dependent Role="SOCA">
+        <PropertyRef Name="maNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_VE_DICHVU">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VE" Type="Self.VE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="maDV" />
+      </Principal>
+      <Dependent Role="VE">
+        <PropertyRef Name="maDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLVinpearl_63130803ModelStoreContainer">
+    <EntitySet Name="CHUCNANG" EntityType="Self.CHUCNANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIDV" EntityType="Self.LOAIDV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAINV" EntityType="Self.LOAINV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOCA" EntityType="Self.SOCA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VE" EntityType="Self.VE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_CTHD_HOADON" Association="Self.fk_CTHD_HOADON">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CTHD_VE" Association="Self.fk_CTHD_VE">
+      <End Role="VE" EntitySet="VE" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DICHVU_LOAIDV" Association="Self.fk_DICHVU_LOAIDV">
+      <End Role="LOAIDV" EntitySet="LOAIDV" />
+      <End Role="DICHVU" EntitySet="DICHVU" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HOADON_KHACHHANG" Association="Self.fk_HOADON_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HOADON_NHANVIEN" Association="Self.fk_HOADON_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="fk_NHANVIEN_LOAINV" Association="Self.fk_NHANVIEN_LOAINV">
+      <End Role="LOAINV" EntitySet="LOAINV" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PHANQUYEN_CHUCNANG" Association="Self.fk_PHANQUYEN_CHUCNANG">
+      <End Role="CHUCNANG" EntitySet="CHUCNANG" />
+      <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PHANQUYEN_LOAINV" Association="Self.fk_PHANQUYEN_LOAINV">
+      <End Role="LOAINV" EntitySet="LOAINV" />
+      <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SOCA_NHANVIEN" Association="Self.fk_SOCA_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="SOCA" EntitySet="SOCA" />
+    </AssociationSet>
+    <AssociationSet Name="fk_VE_DICHVU" Association="Self.fk_VE_DICHVU">
+      <End Role="DICHVU" EntitySet="DICHVU" />
+      <End Role="VE" EntitySet="VE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

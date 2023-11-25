@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLVinpearl_63130803ModelStoreContainer" CdmEntityContainer="QLVinpearl_63130803Entities">
+    <EntitySetMapping Name="CHUCNANGs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.CHUCNANG">
+        <MappingFragment StoreEntitySet="CHUCNANG">
+          <ScalarProperty Name="maChucNang" ColumnName="maChucNang" />
+          <ScalarProperty Name="tenChucNang" ColumnName="tenChucNang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHDs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.CTHD">
+        <MappingFragment StoreEntitySet="CTHD">
+          <ScalarProperty Name="maHD" ColumnName="maHD" />
+          <ScalarProperty Name="maVe" ColumnName="maVe" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="giaTien" ColumnName="giaTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DICHVUs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.DICHVU">
+        <MappingFragment StoreEntitySet="DICHVU">
+          <ScalarProperty Name="maDV" ColumnName="maDV" />
+          <ScalarProperty Name="tenDV" ColumnName="tenDV" />
+          <ScalarProperty Name="moTa" ColumnName="moTa" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="maLoaiDV" ColumnName="maLoaiDV" />
+          <ScalarProperty Name="xepLoai" ColumnName="xepLoai" />
+          <ScalarProperty Name="sdtDV" ColumnName="sdtDV" />
+          <ScalarProperty Name="diaChiDV" ColumnName="diaChiDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="maHD" ColumnName="maHD" />
+          <ScalarProperty Name="maKH" ColumnName="maKH" />
+          <ScalarProperty Name="maNV" ColumnName="maNV" />
+          <ScalarProperty Name="ngayThanhToan" ColumnName="ngayThanhToan" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="maKH" ColumnName="maKH" />
+          <ScalarProperty Name="hoTenKH" ColumnName="hoTenKH" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
+          <ScalarProperty Name="ResetPasswordCodeExpiration" ColumnName="ResetPasswordCodeExpiration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIDVs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.LOAIDV">
+        <MappingFragment StoreEntitySet="LOAIDV">
+          <ScalarProperty Name="maLoaiDV" ColumnName="maLoaiDV" />
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAINVs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.LOAINV">
+        <MappingFragment StoreEntitySet="LOAINV">
+          <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+          <ScalarProperty Name="luongCoBan" ColumnName="luongCoBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="maNV" ColumnName="maNV" />
+          <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+          <ScalarProperty Name="hoTenNV" ColumnName="hoTenNV" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+          <ScalarProperty Name="gioiTinh" ColumnName="gioiTinh" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHANQUYENs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.PHANQUYEN">
+        <MappingFragment StoreEntitySet="PHANQUYEN">
+          <ScalarProperty Name="maChucNang" ColumnName="maChucNang" />
+          <ScalarProperty Name="maLoaiNV" ColumnName="maLoaiNV" />
+          <ScalarProperty Name="ghiChu" ColumnName="ghiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOCAs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.SOCA">
+        <MappingFragment StoreEntitySet="SOCA">
+          <ScalarProperty Name="maCa" ColumnName="maCa" />
+          <ScalarProperty Name="maNV" ColumnName="maNV" />
+          <ScalarProperty Name="soCa1" ColumnName="soCa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEs">
+      <EntityTypeMapping TypeName="QLVinpearl_63130803Model.VE">
+        <MappingFragment StoreEntitySet="VE">
+          <ScalarProperty Name="maVe" ColumnName="maVe" />
+          <ScalarProperty Name="maDV" ColumnName="maDV" />
+          <ScalarProperty Name="loaiVe" ColumnName="loaiVe" />
+          <ScalarProperty Name="giaTien" ColumnName="giaTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
