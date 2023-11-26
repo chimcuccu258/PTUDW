@@ -131,6 +131,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Dashboard_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\Login_63130803Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\PermissionError_63130803Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,7 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Login_63130803\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard_63130803\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PermissionError_63130803\NotAllowPermission.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -269,6 +271,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\datatables-simple-demo.js" />
+    <Content Include="Scripts\js\loginPage.js" />
+    <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
