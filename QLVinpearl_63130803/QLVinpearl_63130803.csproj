@@ -51,18 +51,38 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=7.0.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.7.0.2\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -118,6 +138,7 @@
       <Private>True</Private>
       <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -130,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\Dashboard_63130803Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\KHACHHANGs_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\Login_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionError_63130803Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -195,6 +217,8 @@
     <Content Include="Content\css\adminPageStyle.css" />
     <Content Include="Content\css\loginAdminPage.css" />
     <Content Include="Content\css\styleAdmin.css" />
+    <Content Include="Content\img\Avatar\admin.png" />
+    <Content Include="Content\img\Avatar\user.png" />
     <Content Include="Content\img\dichvu_1.jpg" />
     <Content Include="Content\img\dichvu_10.jpg" />
     <Content Include="Content\img\dichvu_11.jpg" />
@@ -231,6 +255,8 @@
     <Content Include="Content\img\dichvu_7.jpg" />
     <Content Include="Content\img\dichvu_8.jpg" />
     <Content Include="Content\img\dichvu_9.jpg" />
+    <Content Include="Content\img\NavIcon\dashboard.png" />
+    <Content Include="Content\img\vp.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -261,6 +287,11 @@
     <Content Include="Areas\Admin\Views\Login_63130803\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard_63130803\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PermissionError_63130803\NotAllowPermission.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

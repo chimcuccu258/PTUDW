@@ -81,3 +81,11 @@ D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.csproj.CoreCompileInp
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.csproj.CopyComplete
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.dll
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.pdb
+D:\PTUDW\QLVinpearl_63130803\bin\EPPlus.dll
+D:\PTUDW\QLVinpearl_63130803\bin\EPPlus.Interfaces.dll
+D:\PTUDW\QLVinpearl_63130803\bin\EPPlus.System.Drawing.dll
+D:\PTUDW\QLVinpearl_63130803\bin\Microsoft.IO.RecyclableMemoryStream.dll
+D:\PTUDW\QLVinpearl_63130803\bin\System.ComponentModel.Annotations.dll
+D:\PTUDW\QLVinpearl_63130803\bin\System.Web.Providers.dll
+D:\PTUDW\QLVinpearl_63130803\bin\EPPlus.xml
+D:\PTUDW\QLVinpearl_63130803\bin\Microsoft.IO.RecyclableMemoryStream.xml
