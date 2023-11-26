@@ -384,38 +384,41 @@ INSERT INTO LOAINV(maLoaiNV, tenLoai, luongCoBan) VALUES
 ---
 
 INSERT INTO NHANVIEN (maNV, maLoaiNV, hoTenNV, diaChi, ngaySinh, sdt, gioiTinh, anh, email, matKhau) VALUES
-('NV001', 'LNV001', N'Admin', N'Hanoi', '2003-08-25', '0987654321', 0, 'pic2.jpg', 'admin@gmail.com', '12345'),
-('NV002', 'LNV002', N'Phạm Thị Minh', N'Hanoi', '2000-02-14', '0901234567', 0, 'pic2.jpg', 'minhpham@gmail.com', '12345'),
-('NV003', 'LNV002', N'Lê Đình Duy', N'Hai Phong', '1998-11-27', '0978123456', 1, 'pic2.jpg', 'duyld.98@gmail.com', '12345'),
-('NV004', 'LNV003', N'Nguyễn Thị Linh', N'Hai Phong', '1997-08-10', '0967123456', 0, 'pic2.jpg', 'linhnt.97@gmail.com', '12345');
+('NV001', 'LNV001', N'Admin', N'Hanoi', '2003-08-25', '0987654321', 0, 'admin.png', 'admin@gmail.com', '12345'),
+('NV002', 'LNV002', N'Phạm Thị Minh', N'Hanoi', '2000-02-14', '0901234567', 0, 'admin.png', 'minhpham@gmail.com', '12345'),
+('NV003', 'LNV002', N'Lê Đình Duy', N'Hai Phong', '1998-11-27', '0978123456', 1, 'admin.png', 'duyld.98@gmail.com', '12345'),
+('NV004', 'LNV003', N'Nguyễn Thị Linh', N'Hai Phong', '1997-08-10', '0967123456', 0, 'admin.png', 'linhnt.97@gmail.com', '12345');
 
 INSERT INTO NHANVIEN (maNV, maLoaiNV, hoTenNV, diaChi, ngaySinh, sdt, gioiTinh, anh, email, matKhau) VALUES
-('NV005', 'LNV001', N'Trần Văn Anh', N'Ho Chi Minh City', '1995-04-03', '0912345678', 1, 'pic2.jpg', 'anh.tv.95@gmail.com', '12345'),
-('NV006', 'LNV002', N'Nguyễn Thị Bảo', N'Da Nang', '1993-12-18', '0987654321', 0, 'pic2.jpg', 'bao.nt.93@yahoo.com', '12345'),
-('NV007', 'LNV002', N'Lê Minh Chí', N'Can Tho', '1992-07-31', '0978123456', 1, 'pic2.jpg', 'chi.lm.92@gmail.com', '12345'),
-('NV008', 'LNV003', N'Phạm Văn Đạt', N'Nha Trang', '1990-10-15', '0967123456', 0, 'pic2.jpg', 'dat.pv.90@gmail.com', '12345'),
-('NV009', 'LNV001', N'Vũ Thị Êm', N'Hanoi', '1988-05-28', '0912345678', 1, 'pic2.jpg', 'em.vt.88@yahoo.com', '12345'),
-('NV010', 'LNV002', N'Nguyễn Văn Phong', N'Ho Chi Minh City', '1986-02-12', '0987654321', 0, 'pic2.jpg', 'phong.nv.86@gmail.com', '12345'),
-('NV011', 'LNV002', N'Lê Thị Gia', N'Da Nang', '1984-11-25', '0978123456', 1, 'pic2.jpg', 'gia.lt.84@gmail.com', '12345'),
-('NV012', 'LNV003', N'Hoàng Văn Hùng', N'Can Tho', '1982-08-08', '0967123456', 0, 'pic2.jpg', 'hung.vh.82@yahoo.com', '12345'),
-('NV013', 'LNV001', N'Trần Thị Ivy', N'Hai Phong', '1980-01-22', '0912345678', 1, 'pic2.jpg', 'ivy.tt.80@gmail.com', '12345'),
-('NV014', 'LNV002', N'Võ Văn Jan', N'Nha Trang', '1978-06-05', '0987654321', 0, 'pic2.jpg', 'jan.vv.78@gmail.com', '12345'),
-('NV015', 'LNV002', N'Lê Thị Kim', N'Hanoi', '1976-03-20', '0978123456', 1, 'pic2.jpg', 'kim.lt.76@yahoo.com', '12345'),
-('NV016', 'LNV003', N'Nguyễn Văn Linh', N'Ho Chi Minh City', '1974-10-03', '0967123456', 0, 'pic2.jpg', 'linh.nv.74@gmail.com', '12345'),
-('NV017', 'LNV001', N'Phạm Thị Mỹ', N'Da Nang', '1972-07-17', '0912345678', 1, 'pic2.jpg', 'my.pt.72@gmail.com', '12345'),
-('NV018', 'LNV002', N'Trần Văn Ngọc', N'Can Tho', '1970-04-01', '0987654321', 0, 'pic2.jpg', 'ngoc.tv.70@gmail.com', '12345'),
-('NV019', 'LNV002', N'Vũ Thị Oanh', N'Hai Phong', '1968-11-14', '0978123456', 1, 'pic2.jpg', 'oanh.vt.68@yahoo.com', '12345'),
-('NV020', 'LNV003', N'Lê Văn Phương', N'Nha Trang', '1966-08-27', '0967123456', 0, 'pic2.jpg', 'phuong.lv.66@gmail.com', '12345'),
-('NV021', 'LNV001', N'Nguyễn Thị Quỳnh', N'Hanoi', '1964-02-10', '0912345678', 1, 'pic2.jpg', 'quynh.nt.64@gmail.com', '12345'),
-('NV022', 'LNV002', N'Võ Văn Rong', N'Ho Chi Minh City', '1962-11-25', '0987654321', 0, 'pic2.jpg', 'rong.vv.62@yahoo.com', '12345'),
-('NV023', 'LNV002', N'Lê Thị Sương', N'Da Nang', '1960-07-09', '0978123456', 1, 'pic2.jpg', 'suong.lt.60@gmail.com', '12345'),
-('NV024', 'LNV003', N'Nguyễn Văn Tuấn', N'Can Tho', '1958-04-23', '0967123456', 0, 'pic2.jpg', 'van.t.58@gmail.com', '12345'),
-('NV025', 'LNV001', N'Trần Thị Uyên', N'Hai Phong', '1956-01-06', '0912345678', 1, 'pic2.jpg', 'uyen.tt.56@yahoo.com', '12345'),
-('NV026', 'LNV002', N'Vũ Văn Vương', N'Nha Trang', '1954-08-19', '0987654321', 0, 'pic2.jpg', 'vuong.vv.54@gmail.com', '12345'),
-('NV027', 'LNV002', N'Lê Thị Xuân', N'Hanoi', '1952-05-04', '0978123456', 1, 'pic2.jpg', 'xuan.lt.52@gmail.com', '12345'),
-('NV028', 'LNV003', N'Nguyễn Văn Yên', N'Ho Chi Minh City', '1950-02-17', '0967123456', 0, 'pic2.jpg', 'yen.nv.50@yahoo.com', '12345'),
-('NV029', 'LNV001', N'Phạm Thị Zara', N'Da Nang', '1948-09-02', '0912345678', 1, 'pic2.jpg', 'zara.pt.48@gmail.com','0987');
+('NV005', 'LNV001', N'Trần Văn Anh', N'Ho Chi Minh City', '1995-04-03', '0912345678', 1, 'admin.png', 'anh.tv.95@gmail.com', '12345'),
+('NV006', 'LNV002', N'Nguyễn Thị Bảo', N'Da Nang', '1993-12-18', '0987654321', 0, 'admin.png', 'bao.nt.93@yahoo.com', '12345'),
+('NV007', 'LNV002', N'Lê Minh Chí', N'Can Tho', '1992-07-31', '0978123456', 1, 'admin.png', 'chi.lm.92@gmail.com', '12345'),
+('NV008', 'LNV003', N'Phạm Văn Đạt', N'Nha Trang', '1990-10-15', '0967123456', 0, 'admin.png', 'dat.pv.90@gmail.com', '12345'),
+('NV009', 'LNV001', N'Vũ Thị Êm', N'Hanoi', '1988-05-28', '0912345678', 1, 'admin.png', 'em.vt.88@yahoo.com', '12345'),
+('NV010', 'LNV002', N'Nguyễn Văn Phong', N'Ho Chi Minh City', '1986-02-12', '0987654321', 0, 'admin.png', 'phong.nv.86@gmail.com', '12345'),
+('NV011', 'LNV002', N'Lê Thị Gia', N'Da Nang', '1984-11-25', '0978123456', 1, 'admin.png', 'gia.lt.84@gmail.com', '12345'),
+('NV012', 'LNV003', N'Hoàng Văn Hùng', N'Can Tho', '1982-08-08', '0967123456', 0, 'admin.png', 'hung.vh.82@yahoo.com', '12345'),
+('NV013', 'LNV001', N'Trần Thị Ivy', N'Hai Phong', '1980-01-22', '0912345678', 1, 'admin.png', 'ivy.tt.80@gmail.com', '12345'),
+('NV014', 'LNV002', N'Võ Văn Jan', N'Nha Trang', '1978-06-05', '0987654321', 0, 'admin.png', 'jan.vv.78@gmail.com', '12345'),
+('NV015', 'LNV002', N'Lê Thị Kim', N'Hanoi', '1976-03-20', '0978123456', 1, 'admin.png', 'kim.lt.76@yahoo.com', '12345'),
+('NV016', 'LNV003', N'Nguyễn Văn Linh', N'Ho Chi Minh City', '1974-10-03', '0967123456', 0, 'admin.png', 'linh.nv.74@gmail.com', '12345'),
+('NV017', 'LNV001', N'Phạm Thị Mỹ', N'Da Nang', '1972-07-17', '0912345678', 1, 'admin.png', 'my.pt.72@gmail.com', '12345'),
+('NV018', 'LNV002', N'Trần Văn Ngọc', N'Can Tho', '1970-04-01', '0987654321', 0, 'admin.png', 'ngoc.tv.70@gmail.com', '12345'),
+('NV019', 'LNV002', N'Vũ Thị Oanh', N'Hai Phong', '1968-11-14', '0978123456', 1, 'admin.png', 'oanh.vt.68@yahoo.com', '12345'),
+('NV020', 'LNV003', N'Lê Văn Phương', N'Nha Trang', '1966-08-27', '0967123456', 0, 'admin.png', 'phuong.lv.66@gmail.com', '12345'),
+('NV021', 'LNV001', N'Nguyễn Thị Quỳnh', N'Hanoi', '1964-02-10', '0912345678', 1, 'admin.png', 'quynh.nt.64@gmail.com', '12345'),
+('NV022', 'LNV002', N'Võ Văn Rong', N'Ho Chi Minh City', '1962-11-25', '0987654321', 0, 'admin.png', 'rong.vv.62@yahoo.com', '12345'),
+('NV023', 'LNV002', N'Lê Thị Sương', N'Da Nang', '1960-07-09', '0978123456', 1, 'admin.png', 'suong.lt.60@gmail.com', '12345'),
+('NV024', 'LNV003', N'Nguyễn Văn Tuấn', N'Can Tho', '1958-04-23', '0967123456', 0, 'admin.png', 'van.t.58@gmail.com', '12345'),
+('NV025', 'LNV001', N'Trần Thị Uyên', N'Hai Phong', '1956-01-06', '0912345678', 1, 'admin.png', 'uyen.tt.56@yahoo.com', '12345'),
+('NV026', 'LNV002', N'Vũ Văn Vương', N'Nha Trang', '1954-08-19', '0987654321', 0, 'admin.png', 'vuong.vv.54@gmail.com', '12345'),
+('NV027', 'LNV002', N'Lê Thị Xuân', N'Hanoi', '1952-05-04', '0978123456', 1, 'admin.png', 'xuan.lt.52@gmail.com', '12345'),
+('NV028', 'LNV003', N'Nguyễn Văn Yên', N'Ho Chi Minh City', '1950-02-17', '0967123456', 0, 'admin.png', 'yen.nv.50@yahoo.com', '12345'),
+('NV029', 'LNV001', N'Phạm Thị Zara', N'Da Nang', '1948-09-02', '0912345678', 1, 'admin.png', 'zara.pt.48@gmail.com','0987');
 
+-- Trường hợp thay avatar của user về mặc định
+UPDATE NHANVIEN
+SET anh = 'admin.png';
 ---
 INSERT INTO PHANQUYEN(maChucNang, maLoaiNV, ghiChu) VALUES
 ('CN01','LNV001',N'Quyền xem'),

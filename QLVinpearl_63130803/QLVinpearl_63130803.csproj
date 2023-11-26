@@ -153,6 +153,7 @@
     <Compile Include="Areas\Admin\Controllers\Dashboard_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\KHACHHANGs_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\Login_63130803Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\NHANVIENs_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionError_63130803Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -215,6 +216,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\adminPageStyle.css" />
+    <Content Include="Content\css\detailUser.css" />
     <Content Include="Content\css\loginAdminPage.css" />
     <Content Include="Content\css\styleAdmin.css" />
     <Content Include="Content\img\Avatar\admin.png" />
@@ -292,6 +294,11 @@
     <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Details.cshtml" />
     <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\KHACHHANGs_63130803\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NHANVIENs_63130803\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NHANVIENs_63130803\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NHANVIENs_63130803\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NHANVIENs_63130803\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NHANVIENs_63130803\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -1,11 +1,10 @@
-﻿@model QLVinpearl_63130803.Models.KHACHHANG
+﻿@model QLVinpearl_63130803.Models.NHANVIEN
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     string gtinh = "";
 }
-
 <div class="container emp-profile">
     <div class="row">
         <div class="col-md-4">
@@ -16,7 +15,7 @@
         <div class="col-md-6">
             <div class="profile-head">
                 <h5>
-                    @Html.DisplayFor(model => model.hoTenKH)
+                    @Html.DisplayFor(model => model.hoTenNV)
                 </h5>
                 <h6>
                     @Html.DisplayFor(model => model.email)
@@ -36,7 +35,7 @@
                                         <label>Số Điện Thoại</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>@Html.DisplayFor(model => model.SDT)</p>
+                                        <p>@Html.DisplayFor(model => model.sdt)</p>
                                     </div>
                                 </div>
 
@@ -78,6 +77,21 @@
                                         </p>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Số Ca</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Loại Nhân Viên</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>@Html.DisplayFor(model => model.LOAINV.tenLoai)</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +99,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            @Html.ActionLink("Sửa Thông Tin", "Edit", new { id = Model.maKH }, new { @class = "profile-edit-btn text-decoration-none" })
+            @Html.ActionLink("Sửa Thông Tin", "Edit", new { id = Model.maNV }, new { @class = "profile-edit-btn text-decoration-none" })
             <br />
             <div class="my-2"></div>
             @Html.ActionLink("Quay Về", "Index", null, new { @class = "profile-edit-btn text-decoration-none" })

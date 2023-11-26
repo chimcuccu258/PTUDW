@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
@@ -13,7 +12,7 @@ using QLVinpearl_63130803.Models;
 
 namespace QLVinpearl_63130803.Areas.Admin.Controllers
 {
-    public class KHACHHANGs_63130803Controller : Controller
+    public class NHANVIENs_63130803Controller : Controller
     {
         private QLVinpearl_63130803Entities db = new QLVinpearl_63130803Entities();
         // Kiểm tra quyền của nhân viên
@@ -28,17 +27,18 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             }
             return true;
         }
-        // GET: Admin/KHACHHANGs_63130803
+        // GET: Admin/NHANVIENs_63130803
         public ActionResult Index()
         {
             if (CheckPermission("CN01") == false)
             {
                 Response.Redirect("~/Admin/PermissionError_63130803/NotAllowPermission");
             }
-            return View(db.KHACHHANGs.ToList());
+            var nHANVIENs = db.NHANVIENs.Include(n => n.LOAINV);
+            return View(nHANVIENs.ToList());
         }
 
-        // GET: Admin/KHACHHANGs_63130803/Details/5
+        // GET: Admin/NHANVIENs_63130803/Details/5
         public ActionResult Details(string id)
         {
             if (CheckPermission("CN01") == false)
@@ -49,41 +49,39 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
-            if (kHACHHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(kHACHHANG);
+            return View(nHANVIEN);
         }
 
-        // GET: Admin/KHACHHANGs_63130803/Create
-        string LayMaKH()
+        // GET: Admin/NHANVIENs_63130803/Create
+        string LayMaNV()
         {
-            // query lấy mã cuối cùng trong bảng và parse sang số
-            var maMax = db.KHACHHANGs.ToList().Select(n => n.maKH).Max();
-            int maKH = int.Parse(maMax.Substring(2)) + 1;
-            // mã kh: KH000000 => 6 số
-            string KH = maKH.ToString().PadLeft(6, '0');
-            return "KH" + KH;
+            var maMax = db.NHANVIENs.ToList().Select(n => n.maNV).Max();
+            int maNV = int.Parse(maMax.Substring(2)) + 1;
+            string NV = maNV.ToString().PadLeft(3, '0');
+            return "NV" + NV;
         }
         public ActionResult Create()
         {
-            //return View();
             if (CheckPermission("CN02") == false)
             {
                 Response.Redirect("~/Admin/PermissionError_63130803/NotAllowPermission");
             }
-            ViewBag.MaKH = LayMaKH();
+            ViewBag.MaNV = LayMaNV();
+            ViewBag.maLoaiNV = new SelectList(db.LOAINVs, "maLoaiNV", "tenLoai");
             return View();
         }
 
-        // POST: Admin/KHACHHANGs_63130803/Create
+        // POST: Admin/NHANVIENs_63130803/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "maKH,hoTenKH,SDT,diaChi,ngaySinh,gioiTinh,email,matKhau,anh,ResetPasswordCode,ResetPasswordCodeExpiration")] KHACHHANG kHACHHANG)
+        public ActionResult Create([Bind(Include = "maNV,maLoaiNV,hoTenNV,diaChi,ngaySinh,sdt,gioiTinh,anh,email,matKhau")] NHANVIEN nHANVIEN)
         {
             var imgUser = Request.Files["Avatar"];
             string postedFileName = System.IO.Path.GetFileName(imgUser.FileName);
@@ -91,19 +89,18 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             imgUser.SaveAs(path);
             if (ModelState.IsValid)
             {
-                kHACHHANG.maKH = LayMaKH();
-                kHACHHANG.anh = postedFileName;
-                kHACHHANG.ResetPasswordCode = null;
-                kHACHHANG.ResetPasswordCodeExpiration = null;
-                db.KHACHHANGs.Add(kHACHHANG);
+                nHANVIEN.maNV = LayMaNV();
+                nHANVIEN.anh = postedFileName;
+                db.NHANVIENs.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(kHACHHANG);
+            ViewBag.maLoaiNV = new SelectList(db.LOAINVs, "maLoaiNV", "tenLoai", nHANVIEN.maLoaiNV);
+            return View(nHANVIEN);
         }
 
-        // GET: Admin/KHACHHANGs_63130803/Edit/5
+        // GET: Admin/NHANVIENs_63130803/Edit/5
         public ActionResult Edit(string id)
         {
             if (CheckPermission("CN03") == false)
@@ -114,20 +111,21 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
-            if (kHACHHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(kHACHHANG);
+            ViewBag.maLoaiNV = new SelectList(db.LOAINVs, "maLoaiNV", "tenLoai", nHANVIEN.maLoaiNV);
+            return View(nHANVIEN);
         }
 
-        // POST: Admin/KHACHHANGs_63130803/Edit/5
+        // POST: Admin/NHANVIENs_63130803/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "maKH,hoTenKH,SDT,diaChi,ngaySinh,gioiTinh,email,matKhau,anh,ResetPasswordCode,ResetPasswordCodeExpiration")] KHACHHANG kHACHHANG)
+        public ActionResult Edit([Bind(Include = "maNV,maLoaiNV,hoTenNV,diaChi,ngaySinh,sdt,gioiTinh,anh,email,matKhau")] NHANVIEN nHANVIEN)
         {
             var imgUser = Request.Files["Avatar"];
             try
@@ -139,14 +137,15 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             catch { }
             if (ModelState.IsValid)
             {
-                db.Entry(kHACHHANG).State = EntityState.Modified;
+                db.Entry(nHANVIEN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(kHACHHANG);
+            ViewBag.maLoaiNV = new SelectList(db.LOAINVs, "maLoaiNV", "tenLoai", nHANVIEN.maLoaiNV);
+            return View(nHANVIEN);
         }
 
-        // GET: Admin/KHACHHANGs_63130803/Delete/5
+        // GET: Admin/NHANVIENs_63130803/Delete/5
         public ActionResult Delete(string id)
         {
             if (CheckPermission("CN04") == false)
@@ -157,61 +156,60 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
-            if (kHACHHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(kHACHHANG);
+            return View(nHANVIEN);
         }
 
-        // POST: Admin/KHACHHANGs_63130803/Delete/5
+        // POST: Admin/NHANVIENs_63130803/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
-            db.KHACHHANGs.Remove(kHACHHANG);
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            db.NHANVIENs.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
         public ActionResult ExportToExcel()
         {
-            // query lấy dữ liệu bảng khách hàng
-            var listKhachHang = db.KHACHHANGs.ToList();
+            var listNhanVien = db.NHANVIENs.ToList();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
             using (var package = new ExcelPackage())
             {
-                // tạo tên của sheet excel
-                var worksheet = package.Workbook.Worksheets.Add("KhachHangs");
-                // add tên của các cột
-                worksheet.Cells[1, 1].Value = "Mã KH";
-                worksheet.Cells[1, 2].Value = "Tên KH";
-                worksheet.Cells[1, 3].Value = "Số Điện Thoại";
+                var worksheet = package.Workbook.Worksheets.Add("NhanViens");
+
+                worksheet.Cells[1, 1].Value = "Mã NV";
+                worksheet.Cells[1, 2].Value = "Mã Loại NV";
+                worksheet.Cells[1, 3].Value = "Tên NV";
                 worksheet.Cells[1, 4].Value = "Địa Chỉ";
                 worksheet.Cells[1, 5].Value = "Ngày Sinh";
-                worksheet.Cells[1, 6].Value = "Giới Tính";
-                worksheet.Cells[1, 7].Value = "Email";
-                worksheet.Cells[1, 8].Value = "Ảnh";
+                worksheet.Cells[1, 6].Value = "Số Điện Thoại";
+                worksheet.Cells[1, 7].Value = "Giới Tính";
+                worksheet.Cells[1, 8].Value = "Email";
+                worksheet.Cells[1, 9].Value = "Ảnh";
 
                 int row = 2;
-                foreach (var kh in listKhachHang)
+                foreach (var nv in listNhanVien)
                 {
-                    // add dữ liệu tương ứng
-                    worksheet.Cells[row, 1].Value = kh.maKH;
-                    worksheet.Cells[row, 2].Value = kh.hoTenKH;
-                    worksheet.Cells[row, 3].Value = kh.SDT;
-                    worksheet.Cells[row, 4].Value = kh.diaChi;
-                    worksheet.Cells[row, 5].Value = kh.ngaySinh;
-                    worksheet.Cells[row, 6].Value = kh.gioiTinh;
-                    worksheet.Cells[row, 7].Value = kh.email;
-                    worksheet.Cells[row, 8].Value = kh.anh;
+                    worksheet.Cells[row, 1].Value = nv.maNV;
+                    worksheet.Cells[row, 2].Value = nv.maLoaiNV;
+                    worksheet.Cells[row, 3].Value = nv.hoTenNV;
+                    worksheet.Cells[row, 4].Value = nv.diaChi;
+                    worksheet.Cells[row, 5].Value = nv.ngaySinh;
+                    worksheet.Cells[row, 6].Value = nv.sdt;
+                    worksheet.Cells[row, 7].Value = nv.gioiTinh;
+                    worksheet.Cells[row, 8].Value = nv.email;
+                    worksheet.Cells[row, 9].Value = nv.anh;
                     row++;
                 }
 
                 // Thêm thời gian xuất file Excel
                 var currentDate = DateTime.Now.ToString("yyyyMMddHHmmss");
-                var fileName = $"KhachHangs_{currentDate}.xlsx";
+                var fileName = $"NhanViens_{currentDate}.xlsx";
 
                 // Lưu package thành file Excel
                 var stream = new MemoryStream(package.GetAsByteArray());

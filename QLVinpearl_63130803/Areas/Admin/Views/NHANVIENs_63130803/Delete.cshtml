@@ -1,16 +1,15 @@
-﻿@model QLVinpearl_63130803.Models.KHACHHANG
+﻿@model QLVinpearl_63130803.Models.NHANVIEN
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 <div class="container">
-    <h3>Bạn có chắc chắn muốn xoá người dùng này không?</h3>
-    <p>Họ và tên: @Html.DisplayFor(model => model.hoTenKH)</p>
-    <p>Số điện thoại: @Html.DisplayFor(model => model.SDT)</p>
+    <h3>Bạn có chắc chắn muốn xoá nhân viên này không?</h3>
+    <p>Họ và tên: @Html.DisplayFor(model => model.hoTenNV)</p>
+    <p>Số điện thoại: @Html.DisplayFor(model => model.sdt)</p>
     <p>Email: @Html.DisplayFor(model => model.email)</p>
-    @using (Html.BeginForm("Delete", "KHACHHANGs_63130803", FormMethod.Post))
+    @using (Html.BeginForm("Delete", "NHANVIENs_63130803", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <div class="m-auto">

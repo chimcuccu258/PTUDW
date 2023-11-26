@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QLVinpearl_63130803.Models.KHACHHANG>
+﻿@model IEnumerable<QLVinpearl_63130803.Models.NHANVIEN>
 
 @{
     ViewBag.Title = "Index";
@@ -9,12 +9,12 @@
     <div class="container-fluid px-4">
         <div class="my-3 flex">
             @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
-            <a href="@Url.Action("ExportToExcel", "KHACHHANGs_63130803")" class="btn btn-primary">Xuất sang file excel</a>
+            <a href="@Url.Action("ExportToExcel", "NHANVIENs_63130803")" class="btn btn-primary">Xuất sang file excel</a>
         </div>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Danh sách khách hàng
+                Bảng nhân viên
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
@@ -27,6 +27,7 @@
                             <th>Ngày Sinh</th>
                             <th>Giới Tính</th>
                             <th>Email</th>
+                            <th>Loại Nhân Viên</th>
                             <th>Chức Năng</th>
                         </tr>
                     </thead>
@@ -35,8 +36,8 @@
                         {
                             <tr>
                                 <td><img style="width: 70px; height: 70px;" src="~/Content/img/Avatar/@Html.DisplayFor(modelItem => item.anh)" alt="Avatar" /></td>
-                                <td>@Html.DisplayFor(modelItem => item.hoTenKH)</td>
-                                <td>@Html.DisplayFor(modelItem => item.SDT)</td>
+                                <td>@Html.DisplayFor(modelItem => item.hoTenNV)</td>
+                                <td>@Html.DisplayFor(modelItem => item.sdt)</td>
                                 <td>@Html.DisplayFor(modelItem => item.diaChi)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ngaySinh)</td>
                                 <td>
@@ -53,13 +54,14 @@
                                     @gtinh
                                 </td>
                                 <td>@Html.DisplayFor(modelItem => item.email)</td>
+                                <th>@Html.DisplayFor(modelItem => item.LOAINV.tenLoai)</th>
                                 <td>
-                                    <div class="d-flex">
-                                        <a href="@Url.Action("Edit", new { id = item.maKH })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="@Url.Action("Edit", new { id = item.maNV })"><i class="fa-solid fa-lg fa-pen-to-square"></i></a>
                                         <div class="ms-2"></div>
-                                        <a href="@Url.Action("Details", new { id = item.maKH })"><i class="fa-solid fa-lg fa-circle-info"></i></a>
+                                        <a href="@Url.Action("Details", new { id = item.maNV })"><i class="fa-solid fa-lg fa-circle-info"></i></a>
                                         <div class="ms-2"></div>
-                                        <a href="@Url.Action("Delete", new { id = item.maKH })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
+                                        <a href="@Url.Action("Delete", new { id = item.maNV })"><i class="fa-regular fa-lg fa-trash-can"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -70,3 +72,4 @@
         </div>
     </div>
 </main>
+
