@@ -1,0 +1,25 @@
+﻿@model QLVinpearl_63130803.Models.CTHD
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <br />
+    <h3>Bạn có chắc chắn muốn xoá CTHD này không?</h3>
+    <br />
+    <p><span class="fw-bold">Mã hoá đơn</span><br /><span>@Html.DisplayFor(model => model.maHD)</span></p>
+    <p><span class="fw-bold">Mã vé</span><br /><span>@Html.DisplayFor(model => model.maVe)</span></p>
+    <p><span class="fw-bold">Số lượng</span><br /><span>@Html.DisplayFor(model => model.soLuong)</span></p>
+    <p><span class="fw-bold">Giá tiền</span><br /><span>@Html.DisplayFor(model => model.giaTien)</span></p>
+    @using (Html.BeginForm("Delete", "CTHDs_63130803", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("maHD", Model.maHD)
+        @Html.Hidden("maVe", Model.maVe)
+        <div class="m-auto">
+            <input class="btn btn-primary btn-lg" type="submit" value="Xoá" />
+            @Html.ActionLink("Quay Về", "Index", null, new { @class = "btn btn-primary btn-lg" })
+        </div>
+    }
+</div>

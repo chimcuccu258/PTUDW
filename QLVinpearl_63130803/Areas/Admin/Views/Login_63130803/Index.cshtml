@@ -15,17 +15,14 @@
     <link rel="shortcut icon" href="https://statics.vinpearl.com/favicon.png" type="image/png">
 </head>
 <body>
-    <img class="wave" src="~/Content/img/wave.png">
+    <img class="background" src="~/Content/img/bg.jpg" alt="background">
     <div class="container">
-        <div class="img">
-            <img src="~/Content/img/bg.svg">
-        </div>
         <div class="login-content">
             @using (Html.BeginForm("Login", "Login_63130803", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                <img src="~/Content/img/avatar.svg">
+                <img src="~/Content/img/vp.svg">
                 <h2 class="title">Welcome</h2>
                 <div class="input-div one">
                     <div class="i">

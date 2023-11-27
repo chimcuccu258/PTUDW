@@ -1,0 +1,37 @@
+﻿@model QLVinpearl_63130803.Models.VE
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    string loaiVe = "";
+}
+<div class="container">
+    <br />
+    <h3>Bạn có chắc chắn muốn xoá vé này không?</h3>
+    <p><span class="fw-bold">Tên loại dịch vụ</span><br /><span>@Html.DisplayFor(model => model.DICHVU.tenDV)</span></p>
+    <p>
+        <span class="fw-bold">Loại vé</span><br />
+        <span>
+            @{
+                if (Model.loaiVe == true)
+                {
+                    loaiVe = "Người Lớn";
+                }
+                else
+                {
+                    loaiVe = "Trẻ em";
+                }
+            }
+            @loaiVe
+        </span>
+    </p>
+    <p><span  class="fw-bold">Giá tiền</span><br /><span>@Html.DisplayFor(model => model.giaTien)</span></p>
+    @using (Html.BeginForm("Delete", "VEs_63130803", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="m-auto">
+            <input class="btn btn-primary btn-lg" type="submit" value="Xoá" />
+            @Html.ActionLink("Quay Về", "Index", null, new { @class = "btn btn-primary btn-lg" })
+        </div>
+    }
+</div>

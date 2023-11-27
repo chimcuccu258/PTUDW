@@ -5,10 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="container">
+    <br />
     <h3>Bạn có chắc chắn muốn xoá nhân viên này không?</h3>
-    <p>Họ và tên: @Html.DisplayFor(model => model.hoTenNV)</p>
-    <p>Số điện thoại: @Html.DisplayFor(model => model.sdt)</p>
-    <p>Email: @Html.DisplayFor(model => model.email)</p>
+    <br />
+    <p><span class="fw-bold">Họ và tên</span><br /><span>@Html.DisplayFor(model => model.hoTenNV)</span></p>
+    <p><Span class="fw-bold">Số điện thoại</Span><br /><span>@Html.DisplayFor(model => model.sdt)</span></p>
+    <p><span class="fw-bold">Email</span><br /><span>@Html.DisplayFor(model => model.email)</span></p>
     @using (Html.BeginForm("Delete", "NHANVIENs_63130803", FormMethod.Post))
     {
         @Html.AntiForgeryToken()

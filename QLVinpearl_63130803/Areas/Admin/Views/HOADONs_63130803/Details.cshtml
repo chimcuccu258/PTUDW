@@ -1,0 +1,110 @@
+﻿@model QLVinpearl_63130803.Models.HOADON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h4 class="mb-1">Hóa Đơn: @Html.DisplayFor(model => model.maHD)</h4>
+                    <br />
+
+                    <p class="mb-1"><span class="fw-bold">Ngày Thanh Toán</span><br /><span class="text-muted">@Html.DisplayFor(model => model.ngayThanhToan)</span></p>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="fw-bold">Khách Hàng</span><br />
+                            @Html.DisplayFor(model => model.KHACHHANG.hoTenKH)
+                        </div>
+                        <div class="col-md-6">
+                            <span class="fw-bold">Nhân Viên</span><br />
+                            @Html.DisplayFor(model => model.NHANVIEN.hoTenNV)
+                        </div>
+                    </div>
+                    <br />
+
+                    <p class="mb-1">
+                        <span class="fw-bold">Số điện thoại</span><br />
+                        @Html.DisplayFor(model => model.SDT)
+                    </p>
+                    <br />
+
+                    <p class="mb-1">
+                        <span class="fw-bold">Email</span><br />
+                        @Html.DisplayFor(model => model.email)
+                    </p>
+                </li>
+            </ul>
+
+            <div class="my-4" style="width: 100%">
+                <div class="m-auto">
+                    @Html.ActionLink("Sửa Thông Tin", "Edit", null, new { id = Model.maHD }, new { @class = "btn btn-primary btn-lg" })
+                    @Html.ActionLink("Quay Về", "Index", null, new { @class = "btn btn-primary btn-lg" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 overflow-auto">
+            @if (Model.CTHDs.Any())
+            {
+                foreach (var item in Model.CTHDs)
+                {
+                    <h3>>>></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <h4 class="mb-1">Chi tiết hóa đơn mã: @Html.DisplayFor(modelItem => item.maHD)</h4>
+                            <br />
+                            <p class="mb-1"><span class="fw-bold">Mã vé</span><br /><span class="text-muted">@Html.DisplayFor(modelItem => item.maVe)</span></p>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="fw-bold">Loại vé</span><br />
+                                    @{
+                                        if (item.VE.loaiVe == true)
+                                        {
+                                            <text>Người Lớn</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Trẻ em</text>
+                                        }
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="fw-bold">Số lượng</span><br />
+                                    @Html.DisplayFor(modelItem => item.soLuong)
+                                </div>
+                            </div>
+                            <br />
+
+                            <p class="mb-1">
+                                <span class="fw-bold">Số Tiền</span><br />
+                                @Html.DisplayFor(modelItem => item.giaTien)
+                            </p>
+                            <br />
+                        </li>
+                    </ul>
+                    <div class="my-4" style="width: 100%">
+                        <div class="m-auto">
+                            @Html.ActionLink("Sửa Thông Tin", "Edit", "CTHDs_63130803", new { maHD = item.maHD, maVe = item.maVe }, new { @class = "btn btn-gray" })
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No details available.</p>
+            }
+        </div>
+
+    </div>
+
+
+</div>

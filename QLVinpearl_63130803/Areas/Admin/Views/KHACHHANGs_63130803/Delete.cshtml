@@ -7,9 +7,10 @@
 
 <div class="container">
     <h3>Bạn có chắc chắn muốn xoá người dùng này không?</h3>
-    <p>Họ và tên: @Html.DisplayFor(model => model.hoTenKH)</p>
-    <p>Số điện thoại: @Html.DisplayFor(model => model.SDT)</p>
-    <p>Email: @Html.DisplayFor(model => model.email)</p>
+    <br />
+    <p><span class="fw-bold">Họ và tên</span><br /><span>@Html.DisplayFor(model => model.hoTenKH)</span></p>
+    <p><span class="fw-bold">Số điện thoại</span><br /><span>@Html.DisplayFor(model => model.SDT)</span></p>
+    <p><span class="fw-bold">Email</span><br /><span>@Html.DisplayFor(model => model.email)</span></p>
     @using (Html.BeginForm("Delete", "KHACHHANGs_63130803", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
