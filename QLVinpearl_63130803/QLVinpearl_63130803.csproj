@@ -160,8 +160,15 @@
     <Compile Include="Areas\Admin\Controllers\Login_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\NHANVIENs_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionError_63130803Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\SOCAs_63130803Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\VEs_63130803Controller.cs" />
+    <Compile Include="Controllers\Cart_63130803Controller.cs" />
+    <Compile Include="Controllers\DICHVU_63130803Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KHACHHANG_63130803Controller.cs" />
+    <Compile Include="Controllers\LoaiDV_63130803Controller.cs" />
+    <Compile Include="Controllers\LoginKhachHang_63130803Controller.cs" />
+    <Compile Include="Controllers\ResetPassword_63130803Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +194,8 @@
       <DependentUpon>Model_63130803.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginAdminModel_63130803.cs" />
+    <Compile Include="Models\LoginKhachHangModel_63130803.cs" />
+    <Compile Include="Models\MailInfo_63130803.cs" />
     <Compile Include="Models\Model_63130803.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,7 +217,20 @@
     <Compile Include="Models\PHANQUYEN.cs">
       <DependentUpon>Model_63130803.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResetPasswordViewModel_63130803.cs" />
     <Compile Include="Models\SOCA.cs">
+      <DependentUpon>Model_63130803.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model_63130803.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model_63130803.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model_63130803.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TRANGTHAIHD.cs">
       <DependentUpon>Model_63130803.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VE.cs">
@@ -264,7 +286,6 @@
     <Content Include="Content\img\dichvu_7.jpg" />
     <Content Include="Content\img\dichvu_8.jpg" />
     <Content Include="Content\img\dichvu_9.jpg" />
-    <Content Include="Content\img\NavIcon\dashboard.png" />
     <Content Include="Content\img\vp.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -272,8 +293,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model_63130803.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model_63130803.Context.cs</LastGenOutput>
       <DependentUpon>Model_63130803.edmx</DependentUpon>
+      <LastGenOutput>Model_63130803.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model_63130803.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -282,13 +303,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model_63130803.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_63130803.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model_63130803.edmx.diagram">
-      <DependentUpon>Model_63130803.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -336,6 +350,18 @@
     <Content Include="Areas\Admin\Views\CTHDs_63130803\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CTHDs_63130803\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CTHDs_63130803\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SOCAs_63130803\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SOCAs_63130803\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SOCAs_63130803\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SOCAs_63130803\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SOCAs_63130803\Index.cshtml" />
+    <EntityDeploy Include="Models\Model_63130803.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_63130803.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model_63130803.edmx.diagram">
+      <DependentUpon>Model_63130803.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -364,6 +390,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\LoginKhachHang_63130803\Register.cshtml" />
+    <Content Include="Views\LoginKhachHang_63130803\Login.cshtml" />
+    <Content Include="Views\ResetPassword_63130803\Index.cshtml" />
+    <Content Include="Views\ResetPassword_63130803\SendMail.cshtml" />
+    <Content Include="Views\DICHVU_63130803\Details.cshtml" />
+    <Content Include="Views\DICHVU_63130803\Index.cshtml" />
+    <Content Include="Views\DICHVU_63130803\TimKiem.cshtml" />
+    <Content Include="Views\Cart_63130803\Index.cshtml" />
+    <Content Include="Views\KHACHHANG_63130803\Details.cshtml" />
+    <Content Include="Views\KHACHHANG_63130803\Edit.cshtml" />
+    <Content Include="Views\LoaiDV_63130803\DanhSachTheoLoaiDV.cshtml" />
+    <Content Include="Views\LoaiDV_63130803\Details.cshtml" />
+    <Content Include="Views\LoaiDV_63130803\Edit.cshtml" />
+    <Content Include="Views\LoaiDV_63130803\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

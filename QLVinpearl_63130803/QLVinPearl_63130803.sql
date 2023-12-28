@@ -1,5 +1,7 @@
 ﻿DROP DATABASE QLVinpearl_63130803
 
+USE master
+
 CREATE DATABASE QLVinpearl_63130803
 GO
 USE QLVinpearl_63130803
@@ -33,9 +35,11 @@ CREATE TABLE HOADON (
   maHD VARCHAR(10) PRIMARY KEY,
   maKH VARCHAR(10),
   maNV VARCHAR(10),
+  maTrangThai VARCHAR(10),
   ngayThanhToan DATETIME,
   SDT VARCHAR(20),
   email VARCHAR(255),
+  --FOREIGN KEY (maTrangThai) REFERENCES TRANGTHAIHD(maTrangThai)
 );
 
 CREATE TABLE KHACHHANG (
@@ -94,6 +98,11 @@ CREATE TABLE PHANQUYEN (
 	maLoaiNV VARCHAR(10),
 	ghiChu NVARCHAR(255),
 	PRIMARY KEY (maChucNang, maLoaiNV)
+);
+
+CREATE TABLE TRANGTHAIHD (
+	maTrangThai VARCHAR(10) PRIMARY KEY,
+	tenTrangThai NVARCHAR(255)
 );
 
 --Ràng buộc FOREIGN KEY cho bảng PHANQUYEN:
@@ -159,6 +168,11 @@ ON DELETE CASCADE;
 
 ALTER TABLE HOADON ADD CONSTRAINT fk_HOADON_NHANVIEN
 FOREIGN KEY (maNV) REFERENCES NHANVIEN(maNV)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE HOADON ADD CONSTRAINT fk_HOADON_TRANGTHAIHD
+FOREIGN KEY (maTrangThai) REFERENCES TRANGTHAIHD(maTrangThai)
 ON UPDATE CASCADE
 ON DELETE CASCADE;
 
@@ -347,9 +361,7 @@ INSERT INTO KHACHHANG(maKH, hoTenKH, SDT, diaChi, ngaySinh, gioiTinh, email, mat
 ('KH000007', N'Trần Văn Long', '0345678901', N'Hanoi', '1995-03-08', 1, 'long.tv.95@yahoo.com', 'qwerty', 'user.png'),
 ('KH000008', N'Phạm Thị Phương', '0765432109', N'Can Tho', '1994-06-20', 0, 'phuong.ptp.94@hotmail.com', 'passpass', 'user.png'),
 ('KH000009', N'Hoàng Minh Tuấn', '0901234567', N'Hai Phong', '1993-01-30', 1, 'tuan.hm.93@gmail.com', 'mypassword', 'user.png'),
-('KH000010', N'Mai Thanh Hà', '0987654321', N'Da Nang', '1991-08-15', 0, 'ha.mt.91@yahoo.com', '987654', 'user.png');
-
-INSERT INTO KHACHHANG(maKH, hoTenKH, SDT, diaChi, ngaySinh, gioiTinh, email, matKhau, anh) VALUES
+('KH000010', N'Mai Thanh Hà', '0987654321', N'Da Nang', '1991-08-15', 0, 'ha.mt.91@yahoo.com', '987654', 'user.png'),
 ('KH000011', N'Nguyễn Thị Thảo', '0123456789', N'Hanoi', '1992-04-18', 0, 'thao.ntt.92@gmail.com', 'password123', 'user.png'),
 ('KH000012', N'Trần Văn Hùng', '0987654321', N'Ho Chi Minh City', '1996-07-22', 1, 'hung.tv.96@yahoo.com', 'abcdefg', 'user.png'),
 ('KH000013', N'Lê Anh Tuấn', '0369876543', N'Da Nang', '1994-11-15', 0, 'tuan.lat.94@hotmail.com', 'passpass', 'user.png'),
@@ -387,9 +399,7 @@ INSERT INTO NHANVIEN (maNV, maLoaiNV, hoTenNV, diaChi, ngaySinh, sdt, gioiTinh, 
 ('NV001', 'LNV001', N'Admin', N'Hanoi', '2003-08-25', '0987654321', 0, 'admin.png', 'admin@gmail.com', '12345'),
 ('NV002', 'LNV002', N'Phạm Thị Minh', N'Hanoi', '2000-02-14', '0901234567', 0, 'admin.png', 'minhpham@gmail.com', '12345'),
 ('NV003', 'LNV002', N'Lê Đình Duy', N'Hai Phong', '1998-11-27', '0978123456', 1, 'admin.png', 'duyld.98@gmail.com', '12345'),
-('NV004', 'LNV003', N'Nguyễn Thị Linh', N'Hai Phong', '1997-08-10', '0967123456', 0, 'admin.png', 'linhnt.97@gmail.com', '12345');
-
-INSERT INTO NHANVIEN (maNV, maLoaiNV, hoTenNV, diaChi, ngaySinh, sdt, gioiTinh, anh, email, matKhau) VALUES
+('NV004', 'LNV003', N'Nguyễn Thị Linh', N'Hai Phong', '1997-08-10', '0967123456', 0, 'admin.png', 'linhnt.97@gmail.com', '12345'),
 ('NV005', 'LNV001', N'Trần Văn Anh', N'Ho Chi Minh City', '1995-04-03', '0912345678', 1, 'admin.png', 'anh.tv.95@gmail.com', '12345'),
 ('NV006', 'LNV002', N'Nguyễn Thị Bảo', N'Da Nang', '1993-12-18', '0987654321', 0, 'admin.png', 'bao.nt.93@yahoo.com', '12345'),
 ('NV007', 'LNV002', N'Lê Minh Chí', N'Can Tho', '1992-07-31', '0978123456', 1, 'admin.png', 'chi.lm.92@gmail.com', '12345'),
@@ -414,7 +424,8 @@ INSERT INTO NHANVIEN (maNV, maLoaiNV, hoTenNV, diaChi, ngaySinh, sdt, gioiTinh, 
 ('NV026', 'LNV002', N'Vũ Văn Vương', N'Nha Trang', '1954-08-19', '0987654321', 0, 'admin.png', 'vuong.vv.54@gmail.com', '12345'),
 ('NV027', 'LNV002', N'Lê Thị Xuân', N'Hanoi', '1952-05-04', '0978123456', 1, 'admin.png', 'xuan.lt.52@gmail.com', '12345'),
 ('NV028', 'LNV003', N'Nguyễn Văn Yên', N'Ho Chi Minh City', '1950-02-17', '0967123456', 0, 'admin.png', 'yen.nv.50@yahoo.com', '12345'),
-('NV029', 'LNV001', N'Phạm Thị Zara', N'Da Nang', '1948-09-02', '0912345678', 1, 'admin.png', 'zara.pt.48@gmail.com','0987');
+('NV029', 'LNV001', N'Phạm Thị Zara', N'Da Nang', '1948-09-02', '0912345678', 1, 'admin.png', 'zara.pt.48@gmail.com','0987'),
+('NV030', 'LNV001', N'Nguyễn Quốc Thái', N'Nha Trang', '2003-09-02', '09123456345', 1, 'admin.png', 'thai.nq.48@gmail.com','098700');
 
 -- Trường hợp thay avatar của user về mặc định
 UPDATE NHANVIEN
@@ -432,38 +443,26 @@ INSERT INTO PHANQUYEN(maChucNang, maLoaiNV, ghiChu) VALUES
 ('CN01','LNV003',N'Quyền xem'),
 ('CN03','LNV003',N'Quyền sửa');
 
---INSERT INTO HOADON (maHD, maKH, maNV, ngayThanhToan, SDT, email) VALUES
---('HD000001', 'KH000001', 'NV001', '2023-11-22 14:11:10', '0092313213', 'duy.nh.62cntt@ntu.edu.vn'),
---('HD000002', 'KH000002', 'NV001', '2023-11-28 00:00:00', '0385247684', 'ly.dt.62cntt@ntu.edu.vn'),
---('HD000003', 'KH000002', 'NV001', '2023-11-28 00:00:00', '0385247684', 'ly.dt.62cntt@ntu.edu.vn'),
---('HD000004', 'KH000003', 'NV001', '2023-11-29 00:00:00', '0385247684', 'minh62cntt@ntu.edu.vn'),
---('HD000005', 'KH000003', 'NV001', '2023-11-29 00:00:00', '0385247684', 'minh62cntt@ntu.edu.vn'),
---('HD000006', 'KH000004', 'NV002', '2023-11-30 00:00:00', '0385247684', 'truong@gmail.com'),
---('HD000007', 'KH000008', 'NV003', '2023-12-01 00:00:00', '0704460748', 'duynho@gmail.com'),
---('HD000008', 'KH000009', 'NV003', '2023-12-02 00:00:00', '0347953691', 'luong@gmail.com'),
---('HD000009', 'KH000010', 'NV001', '2023-12-03 00:00:00', '0347953691', 'hong@gmail.com'),
---('HD000010', 'KH000011', 'NV001', '2023-12-04 00:00:00', '0123456789', 'hai.nguyen@gmail.com'),
---('HD000011', 'KH000012', 'NV001', '2023-12-05 00:00:00', '0987654321', 'lan.pham@gmail.com'),
---('HD000012', 'KH000013', 'NV001', '2023-12-06 00:00:00', '0909090909', 'binh.le@gmail.com'),
---('HD000013', 'KH000014', 'NV002', '2023-12-07 00:00:00', '0586164102', 'tung.do@gmail.com'),
---('HD000014', 'KH000015', 'NV003', '2023-12-08 00:00:00', '0385247684', 'duc.tran@gmail.com'),
---('HD000015', 'KH000016', 'NV001', '2023-12-09 00:00:00', '0123456789', 'anh.duc.nguyen@gmail.com'),
---('HD000016', 'KH000021', 'NV001', '2023-12-10 00:00:00', '0123456789', 'huong.nguyen@gmail.com'),
---('HD000017', 'KH000022', 'NV001', '2023-12-11 00:00:00', '0987654321', 'tu.tran@gmail.com'),
---('HD000018', 'KH000023', 'NV001', '2023-12-12 00:00:00', '0909090909', 'hong.ngo@gmail.com'),
---('HD000019', 'KH000026', 'NV001', '2023-12-13 00:00:00', '0123456789', 'son.pham@gmail.com'),
---('HD000020', 'KH000027', 'NV001', '2023-12-14 00:00:00', '0909090909', 'nam.nguyen@gmail.com'),
---('HD000021', 'KH000028', 'NV001', '2023-12-15 00:00:00', '0385247684', 'tram.ngo@gmail.com'),
---('HD000022', 'KH000029', 'NV001', '2023-12-16 00:00:00', '0586164102', 'yen.phan@gmail.com'),
---('HD000023', 'KH000030', 'NV004', '2023-12-17 00:00:00', '0123456789', 'duc.huynh@gmail.com'),
---('HD000024', 'KH000021', 'NV001', '2023-12-20 00:00:00', '0123456789', 'huong.nguyen@gmail.com'),
---('HD000025', 'KH000022', 'NV001', '2023-12-21 00:00:00', '0987654321', 'tu.tran@gmail.com'),
---('HD000026', 'KH000023', 'NV001', '2023-12-22 00:00:00', '0909090909', 'hong.ngo@gmail.com'),
---('HD000027', 'KH000026', 'NV001', '2023-12-23 00:00:00', '0123456789', 'son.pham@gmail.com'),
---('HD000028', 'KH000027', 'NV002', '2023-12-24 00:00:00', '0909090909', 'nam.nguyen@gmail.com'),
---('HD000029', 'KH000028', 'NV003', '2023-12-25 00:00:00', '0385247684', 'tram.ngo@gmail.com'),
---('HD000030', 'KH000029', 'NV001', '2023-12-26 00:00:00', '0586164102', 'yen.phan@gmail.com'),
---('HD000031', 'KH000030', 'NV001', '2023-12-26 00:00:00', '0123456789', 'duc.huynh@gmail.com');
+INSERT INTO TRANGTHAIHD (maTrangThai, tenTrangThai) VALUES
+('TT000001', 'Chưa thanh toán'),
+('TT000002', 'Đã thanh toán');
+
+INSERT INTO HOADON (maHD, maKH, maNV, maTrangThai, ngayThanhToan, SDT, email) VALUES
+('HD000001', 'KH000001', 'NV001', 'TT000002', '2023-11-22 14:11:10', '0987654321', 'nga.vm.62@ntu.edu.com'),
+('HD000002', 'KH000002', 'NV001', 'TT000002', '2023-11-28 00:00:00', '0987654321', 'long.nh.60cntt@ntu.edu.vn'),
+('HD000003', 'KH000002', 'NV001', 'TT000002', '2023-11-28 00:00:00', '0987654321', 'long.nh.60cntt@ntu.edu.vn'),
+('HD000004', 'KH000003', 'NV001', 'TT000002', '2023-11-29 00:00:00', '0385247684', 'minh.tq.62cntt@ntu.edu.vn'),
+('HD000005', 'KH000003', 'NV001', 'TT000002', '2023-11-29 00:00:00', '0385247684', 'minh.tq.62cntt@ntu.edu.vn'),
+('HD000006', 'KH000004', 'NV002', 'TT000002', '2023-11-30 00:00:00', '0123456789', 'mai.nt.00@abc.com'),
+('HD000007', 'KH000008', 'NV003', 'TT000002', '2023-12-01 00:00:00', '0765432109', 'phuong.ptp.94@hotmail.com'),
+('HD000008', 'KH000009', 'NV003', 'TT000002', '2023-12-02 00:00:00', '0901234567', 'tuan.hm.93@gmail.com'),
+('HD000009', 'KH000010', 'NV001', 'TT000002', '2023-12-03 00:00:00', '0987654321', 'ha.mt.91@yahoo.com'),
+('HD000010', 'KH000011', 'NV001', 'TT000002', '2023-12-04 00:00:00', '0123456789', 'thao.ntt.92@gmail.com'),
+('HD000011', 'KH000012', 'NV001', 'TT000002', '2023-12-05 00:00:00', '0987654321', 'hung.tv.96@yahoo.com');
+
+INSERT INTO HOADON (maHD, maKH, maNV, ngayThanhToan, SDT, email)
+VALUES
+('HD000012', 'KH000002', 'NV001', '2023-12-05 15:30:00', '0987654321', 'long.nh.60cntt@ntu.edu.vn');
 
 --select * from HOADON
 
@@ -472,34 +471,18 @@ INSERT INTO SOCA(maCa, maNV, soCa) VALUES
 ('CA002', 'NV002', 30),
 ('CA003', 'NV003', 20);
 ---
---INSERT INTO CTHD (maHD, maVe, soLuong, giaTien) VALUES
---('HD000001', 'VE000001', 1, 2044000),
---('HD000002', 'VE000002', 1, 3420000),
---('HD000003', 'VE000003', 5, 3500000),
---('HD000004', 'VE000004', 1, 3000000),
---('HD000005', 'VE000005', 3, 3000000),
---('HD000006', 'VE000006', 2, 1340000),
---('HD000007', 'VE000007', 1, 480000),
---('HD000008', 'VE000008', 3, 2010000),
---('HD000009', 'VE000009', 1, 650000),
---('HD000010', 'VE000010', 4, 2200000),
---('HD000011', 'VE000011', 2, 600000),
---('HD000012', 'VE000012', 1, 350000),
---('HD000013', 'VE000021', 1, 650000),
---('HD000014', 'VE000022', 3, 1620000),
---('HD000015', 'VE000031', 2, 920000),
---('HD000016', 'VE000001', 1, 400000),
---('HD000017', 'VE000002', 2, 960000),
---('HD000018', 'VE000013', 3, 2250000),
---('HD000019', 'VE000014', 2, 800000),
---('HD000020', 'VE000025', 1, 500000),
---('HD000021', 'VE000026', 4, 1920000),
---('HD000022', 'VE000037', 2, 900000),
---('HD000023', 'VE000038', 3, 1350000),
---('HD000024', 'VE000001', 2, 800000),
---('HD000025', 'VE000002', 1, 480000),
---('HD000026', 'VE000013', 4, 3000000),
---('HD000027', 'VE000014', 3, 2250000),
---('HD000028', 'VE000025', 2, 1000000),
---('HD000029', 'VE000013', 2, 1500000),
---('HD000030', 'VE000025', 1, 500000);
+INSERT INTO CTHD (maHD, maVe, soLuong, giaTien) VALUES
+('HD000001', 'VE000001', 1, 2044000),
+('HD000002', 'VE000002', 1, 3420000),
+('HD000003', 'VE000003', 5, 3500000),
+('HD000004', 'VE000004', 1, 3000000),
+('HD000005', 'VE000005', 3, 3000000),
+('HD000006', 'VE000006', 2, 1340000),
+('HD000007', 'VE000007', 1, 480000),
+('HD000008', 'VE000008', 3, 2010000),
+('HD000009', 'VE000009', 1, 650000),
+('HD000010', 'VE000010', 4, 2200000),
+('HD000011', 'VE000011', 2, 600000),
+('HD000012', 'VE000012', 1, 1500000),
+('HD000012', 'VE000013', 1, 3000000);
+

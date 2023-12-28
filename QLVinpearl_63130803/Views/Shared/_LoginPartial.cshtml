@@ -1,0 +1,20 @@
+﻿
+@{
+    if (Session["EmailKH"] != null)
+    {
+        string EmailKH = Session["EmailKH"].ToString();
+        ViewBag.EmailKH = EmailKH;
+        <div class="me-2">
+            <a href="@Url.Action("Details","KHACHHANG_63130803")" class="text-decoration-none text-black fs-6 fw-bold">@ViewBag.EmailKH</a>
+            <br />
+            <a href="@Url.Action("Logout","LoginKhachHang_63130803")" class="text-decoration-none text-black fs-6 fw-bold" style="margin-left: 30%">Đăng Xuất</a>
+        </div>
+    }
+    else
+    {
+<ul class="" style="list-style: none; display: flex;">
+    <li class="fw-bold me-4 mt-2">@Html.ActionLink("Đăng ký", "Register", "LoginKhachHang_63130803", routeValues: null, htmlAttributes: new { id = "registerLink", style = "font-size: 15px;" })</li>
+    <li class="fw-bold me-4 mt-2">@Html.ActionLink("Đăng nhập", "Login", "LoginKhachHang_63130803", routeValues: null, htmlAttributes: new { id = "loginLink", style = "font-size: 15px;" })</li>
+</ul>
+    }
+}

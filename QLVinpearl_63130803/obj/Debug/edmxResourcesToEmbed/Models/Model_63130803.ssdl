@@ -37,6 +37,7 @@
     <Property Name="maHD" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="maKH" Type="varchar" MaxLength="10" />
     <Property Name="maNV" Type="varchar" MaxLength="10" />
+    <Property Name="maTrangThai" Type="varchar" MaxLength="10" />
     <Property Name="ngayThanhToan" Type="datetime" />
     <Property Name="SDT" Type="varchar" MaxLength="20" />
     <Property Name="email" Type="varchar" MaxLength="255" />
@@ -104,6 +105,23 @@
     <Property Name="maCa" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="maNV" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="soCa" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TRANGTHAIHD">
+    <Key>
+      <PropertyRef Name="maTrangThai" />
+    </Key>
+    <Property Name="maTrangThai" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tenTrangThai" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="VE">
     <Key>
@@ -184,6 +202,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_HOADON_TRANGTHAIHD">
+    <End Role="TRANGTHAIHD" Type="Self.TRANGTHAIHD" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAIHD">
+        <PropertyRef Name="maTrangThai" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="maTrangThai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_NHANVIEN_LOAINV">
     <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -254,6 +286,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="QLVinpearl_63130803ModelStoreContainer">
     <EntitySet Name="CHUCNANG" EntityType="Self.CHUCNANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
@@ -265,6 +328,8 @@
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SOCA" EntityType="Self.SOCA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRANGTHAIHD" EntityType="Self.TRANGTHAIHD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VE" EntityType="Self.VE" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="fk_CTHD_HOADON" Association="Self.fk_CTHD_HOADON">
       <End Role="HOADON" EntitySet="HOADON" />
@@ -284,6 +349,10 @@
     </AssociationSet>
     <AssociationSet Name="fk_HOADON_NHANVIEN" Association="Self.fk_HOADON_NHANVIEN">
       <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HOADON_TRANGTHAIHD" Association="Self.fk_HOADON_TRANGTHAIHD">
+      <End Role="TRANGTHAIHD" EntitySet="TRANGTHAIHD" />
       <End Role="HOADON" EntitySet="HOADON" />
     </AssociationSet>
     <AssociationSet Name="fk_NHANVIEN_LOAINV" Association="Self.fk_NHANVIEN_LOAINV">

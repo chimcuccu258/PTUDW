@@ -17,7 +17,7 @@ namespace QLVinpearl_63130803.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", controller = "Login", id = UrlParameter.Optional }
+                new { action = "Index", controller = "Login_63130803", id = UrlParameter.Optional }
             );
         }
     }

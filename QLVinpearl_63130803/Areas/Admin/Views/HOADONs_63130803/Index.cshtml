@@ -21,6 +21,7 @@
                             <th>Mã Hoá Đơn</th>
                             <th>Tên Khách Hàng</th>
                             <th>Tên Nhân Viên</th>
+                            <th>Trạng thái</th>
                             <th>Ngày Thanh Toán</th>
                             <th>Số Điện Thoại</th>
                             <th>Email</th>
@@ -34,6 +35,7 @@
                                 <td>@Html.DisplayFor(modelItem => item.maHD)</td>
                                 <th>@Html.DisplayFor(modelItem => item.KHACHHANG.hoTenKH)</th>
                                 <th>@Html.DisplayFor(modelItem => item.NHANVIEN.hoTenNV)</th>
+                                <th>@Html.DisplayFor(modelItem => item.TRANGTHAIHD.tenTrangThai)</th>
                                 <td>@Html.DisplayFor(modelItem => item.ngayThanhToan)</td>
                                 <th>@Html.DisplayFor(modelItem => item.SDT)</th>
                                 <th>@Html.DisplayFor(modelItem => item.email)</th>

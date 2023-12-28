@@ -42,12 +42,14 @@
     <Property Name="maHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="maKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="maNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="maTrangThai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ngayThanhToan" Type="DateTime" Precision="3" />
     <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="CTHDs" Relationship="Self.fk_CTHD_HOADON" FromRole="HOADON" ToRole="CTHD" />
     <NavigationProperty Name="KHACHHANG" Relationship="Self.fk_HOADON_KHACHHANG" FromRole="HOADON" ToRole="KHACHHANG" />
     <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_HOADON_NHANVIEN" FromRole="HOADON" ToRole="NHANVIEN" />
+    <NavigationProperty Name="TRANGTHAIHD" Relationship="Self.fk_HOADON_TRANGTHAIHD" FromRole="HOADON" ToRole="TRANGTHAIHD" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -122,6 +124,24 @@
     <Property Name="maNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="soCa1" Type="Int32" />
     <NavigationProperty Name="NHANVIEN" Relationship="Self.fk_SOCA_NHANVIEN" FromRole="SOCA" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TRANGTHAIHD">
+    <Key>
+      <PropertyRef Name="maTrangThai" />
+    </Key>
+    <Property Name="maTrangThai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tenTrangThai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.fk_HOADON_TRANGTHAIHD" FromRole="TRANGTHAIHD" ToRole="HOADON" />
   </EntityType>
   <EntityType Name="VE">
     <Key>
@@ -232,6 +252,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="fk_HOADON_TRANGTHAIHD">
+    <End Role="TRANGTHAIHD" Type="Self.TRANGTHAIHD" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAIHD">
+        <PropertyRef Name="maTrangThai" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="maTrangThai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_NHANVIEN_LOAINV">
     <End Role="LOAINV" Type="Self.LOAINV" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -285,6 +319,8 @@
     <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
     <EntitySet Name="PHANQUYENs" EntityType="Self.PHANQUYEN" />
     <EntitySet Name="SOCAs" EntityType="Self.SOCA" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TRANGTHAIHDs" EntityType="Self.TRANGTHAIHD" />
     <EntitySet Name="VEs" EntityType="Self.VE" />
     <AssociationSet Name="fk_PHANQUYEN_CHUCNANG" Association="Self.fk_PHANQUYEN_CHUCNANG">
       <End Role="CHUCNANG" EntitySet="CHUCNANGs" />
@@ -314,6 +350,10 @@
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="HOADON" EntitySet="HOADONs" />
     </AssociationSet>
+    <AssociationSet Name="fk_HOADON_TRANGTHAIHD" Association="Self.fk_HOADON_TRANGTHAIHD">
+      <End Role="TRANGTHAIHD" EntitySet="TRANGTHAIHDs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
     <AssociationSet Name="fk_NHANVIEN_LOAINV" Association="Self.fk_NHANVIEN_LOAINV">
       <End Role="LOAINV" EntitySet="LOAINVs" />
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
@@ -326,5 +366,46 @@
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="SOCA" EntitySet="SOCAs" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLVinpearl_63130803Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLVinpearl_63130803Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

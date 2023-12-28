@@ -66,6 +66,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             }
             ViewBag.maKH = new SelectList(db.KHACHHANGs, "maKH", "hoTenKH");
             ViewBag.maNV = new SelectList(db.NHANVIENs, "maNV", "maLoaiNV");
+            ViewBag.maTrangThai = new SelectList(db.TRANGTHAIHDs, "maTrangThai", "tenTrangThai");
             return View();
         }
 
@@ -85,6 +86,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
 
             ViewBag.maKH = new SelectList(db.KHACHHANGs, "maKH", "hoTenKH", hOADON.maKH);
             ViewBag.maNV = new SelectList(db.NHANVIENs, "maNV", "maLoaiNV", hOADON.maNV);
+            ViewBag.maTrangThai = new SelectList(db.TRANGTHAIHDs, "maTrangThai", "tenTrangThai", hOADON.maTrangThai);
             return View(hOADON);
         }
 
@@ -106,6 +108,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             }
             ViewBag.maKH = new SelectList(db.KHACHHANGs, "maKH", "hoTenKH", hOADON.maKH);
             ViewBag.maNV = new SelectList(db.NHANVIENs, "maNV", "maLoaiNV", hOADON.maNV);
+            ViewBag.maTrangThai = new SelectList(db.TRANGTHAIHDs, "maTrangThai", "tenTrangThai", hOADON.maTrangThai);
             return View(hOADON);
         }
 
@@ -114,7 +117,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "maHD,maKH,maNV,ngayThanhToan,SDT,email")] HOADON hOADON)
+        public ActionResult Edit([Bind(Include = "maHD,maKH,maNV,ngayThanhToan,SDT,email,maTrangThai")] HOADON hOADON)
         {
             if (ModelState.IsValid)
             {
@@ -124,6 +127,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
             }
             ViewBag.maKH = new SelectList(db.KHACHHANGs, "maKH", "hoTenKH", hOADON.maKH);
             ViewBag.maNV = new SelectList(db.NHANVIENs, "maNV", "maLoaiNV", hOADON.maNV);
+            ViewBag.maTrangThai = new SelectList(db.TRANGTHAIHDs, "maTrangThai", "tenTrangThai", hOADON.maTrangThai);
             return View(hOADON);
         }
 
@@ -178,6 +182,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
                 worksheet.Cells[1, 1].Value = "Mã HD";
                 worksheet.Cells[1, 2].Value = "Mã KH";
                 worksheet.Cells[1, 3].Value = "Mã NV";
+                worksheet.Cells[1, 3].Value = "Trạng thái";
                 worksheet.Cells[1, 4].Value = "Ngày Thanh Toán";
                 worksheet.Cells[1, 5].Value = "SĐT";
                 worksheet.Cells[1, 6].Value = "Email";
@@ -191,6 +196,7 @@ namespace QLVinpearl_63130803.Areas.Admin.Controllers
                     worksheet.Cells[row, 1].Value = hd.HOADON.maHD;
                     worksheet.Cells[row, 2].Value = hd.HOADON.maKH;
                     worksheet.Cells[row, 3].Value = hd.HOADON.maNV;
+                    worksheet.Cells[row, 3].Value = hd.HOADON.maTrangThai;
                     worksheet.Cells[row, 4].Value = hd.HOADON.ngayThanhToan;
                     worksheet.Cells[row, 5].Value = hd.HOADON.SDT;
                     worksheet.Cells[row, 6].Value = hd.HOADON.email;

@@ -23,6 +23,7 @@ namespace QLVinpearl_63130803.Models
         public string maHD { get; set; }
         public string maKH { get; set; }
         public string maNV { get; set; }
+        public string maTrangThai { get; set; }
         public Nullable<System.DateTime> ngayThanhToan { get; set; }
         public string SDT { get; set; }
         public string email { get; set; }
@@ -31,5 +32,6 @@ namespace QLVinpearl_63130803.Models
         public virtual ICollection<CTHD> CTHDs { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual TRANGTHAIHD TRANGTHAIHD { get; set; }
     }
 }

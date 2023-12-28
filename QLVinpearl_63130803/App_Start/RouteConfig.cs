@@ -16,7 +16,7 @@ namespace QLVinpearl_63130803
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "DICHVUs_63130803", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
