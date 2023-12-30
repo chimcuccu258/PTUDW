@@ -236,6 +236,9 @@
     <Compile Include="Models\VE.cs">
       <DependentUpon>Model_63130803.tt</DependentUpon>
     </Compile>
+    <Compile Include="Other\PayCompare.cs" />
+    <Compile Include="Other\PayLib.cs" />
+    <Compile Include="Other\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +409,7 @@
     <Content Include="Views\LoaiDV_63130803\Details.cshtml" />
     <Content Include="Views\LoaiDV_63130803\Edit.cshtml" />
     <Content Include="Views\LoaiDV_63130803\Index.cshtml" />
+    <Content Include="Views\Cart_63130803\PaymentConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
