@@ -88,3 +88,4 @@ D:\PTUDW\QLVinpearl_63130803\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatf
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.csproj.CopyComplete
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.dll
 D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.pdb
+D:\PTUDW\QLVinpearl_63130803\obj\Debug\QLVinpearl_63130803.csproj.AssemblyReference.cache
